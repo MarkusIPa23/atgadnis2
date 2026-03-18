@@ -98,8 +98,13 @@
         @foreach($tasks as $task)
             <div class="bg-white p-4 mb-2 rounded shadow flex justify-between">
                 <div>
-                    <strong>{{ $task->title }}</strong>
-                    <div class="text-sm text-gray-500 mt-2">📅 Termiņš: {{ $task->due_date }}</div>
+                    <form method="POST" action="/tasks/{{ $task->id }}">
+                        @csrf
+                        @method('PATCH')
+                        <input name="title" value="{{ $task->title }}" class="border p-2 w-full mb-2">
+                        <input name="due_date" type="date" value="{{ $task->due_date }}" class="border p-2 w-full mb-2">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded">Atjaunināt</button>
+                    </form>
                     @if($task->is_favorite)
                         <div class="text-yellow-500 mt-2">⭐ Favorīts</div>
                     @endif

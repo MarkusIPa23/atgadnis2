@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::patch('/tasks/{task}/favorite', [TaskController::class, 'favorite'])->name('tasks.favorite');
+    Route::patch('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 });
 
 require __DIR__.'/auth.php';

@@ -67,4 +67,19 @@ class TaskController extends Controller
 
         return back();
     }
+
+    public function update(Request $request, Task $task)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'due_date' => 'nullable|date',
+        ]);
+
+        $task->update([
+            'title' => $request->title,
+            'due_date' => $request->due_date,
+        ]);
+
+        return back()->with('success', 'Uzdevums atjaunināts!');
+    }
 }
