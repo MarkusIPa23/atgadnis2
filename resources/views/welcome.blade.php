@@ -20,8 +20,8 @@
                 <button class="text-red-500">Logout</button>
             </form>
         @else
-            <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded">Login</a>
-            <a href="/register" class="bg-blue-500 text-white px-4 py-2 rounded">Register</a>
+            <a href="{{ route('login') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Login</a>
+            <a href="{{ route('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Register</a>
         @endauth
     </div>
 </nav>
@@ -31,9 +31,6 @@
             Pārvaldi savus uzdevumus viegli 🚀
         </h2>
 
-            <a href="/" class="bg-green-500 text-white px-6 py-3 rounded text-lg">
-                Sākt darbu
-            </a>
     </section>
 
     <!-- FEATURES -->
@@ -42,7 +39,6 @@
         <!-- Uzdevumi -->
         <div class="bg-white p-6 rounded shadow text-center">
             <h3 class="font-bold text-xl mb-2">📋 Uzdevumi</h3>
-            <p>Pievieno, rediģē un pārvaldi savus darbus</p>
             <ul class="mt-4 text-left">
                 @foreach($tasks as $task)
                     <li>- {{ $task->title }}</li>
@@ -53,7 +49,6 @@
         <!-- Termiņi -->
         <div class="bg-white p-6 rounded shadow text-center">
             <h3 class="font-bold text-xl mb-2">📅 Termiņi</h3>
-            <p>Seko līdzi svarīgiem datumiem</p>
             <ul class="mt-4 text-left">
                 @foreach($tasks as $task)
                     @if($task->due_date)
@@ -66,7 +61,6 @@
         <!-- Favorīti -->
         <div class="bg-white p-6 rounded shadow text-center">
             <h3 class="font-bold text-xl mb-2">⭐ Favorīti</h3>
-            <p>Iezīmē svarīgākos uzdevumus</p>
             <ul class="mt-4 text-left">
                 @foreach($tasks as $task)
                     @if($task->is_favorite)

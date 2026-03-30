@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/tasks');
+        return redirect('/');
     }
 
     // LOGIN PAGE
@@ -47,7 +47,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/tasks');
+            return redirect('/');
         }
 
         return back()->withErrors([

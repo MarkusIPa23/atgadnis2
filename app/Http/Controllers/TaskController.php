@@ -15,13 +15,13 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::where('user_id', auth()->id())
-            ->where('completed', false) // Rādīt tikai nepabeigtos uzdevumus
+            ->where('is_completed', false) // Rādīt tikai nepabeigtos uzdevumus
             ->latest()
             ->get();
 
         $totalTasks = $tasks->count();
         $completedTasks = Task::where('user_id', auth()->id())
-            ->where('completed', true)
+            ->where('is_completed', true)
             ->count();
         $pendingTasks = $totalTasks;
 
